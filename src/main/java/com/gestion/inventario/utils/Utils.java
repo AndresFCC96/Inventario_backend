@@ -1,12 +1,11 @@
 package com.gestion.inventario.utils;
 
+import com.gestion.inventario.dominio.Respuesta;
+import org.apache.commons.validator.routines.EmailValidator;
+
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.gestion.inventario.dominio.Respuesta;
-
-import org.apache.commons.validator.routines.EmailValidator;
 
 public class Utils {
 

@@ -1,10 +1,8 @@
 package com.gestion.inventario.servicio;
 
 import com.gestion.inventario.dominio.Area;
-
 import com.gestion.inventario.dominio.Respuesta;
 import com.gestion.inventario.dto.AreaDto;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service

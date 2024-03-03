@@ -1,7 +1,7 @@
 package com.gestion.inventario.testdatabuilder;
 
-import com.gestion.inventario.utils.Roles;
 import com.gestion.inventario.dominio.Usuario;
+import com.gestion.inventario.utils.Roles;
 
 public class UsuarioTestDataBuilder {
 

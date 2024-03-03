@@ -1,6 +1,5 @@
 package com.gestion.inventario.dominio;
 
-import com.gestion.inventario.utils.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

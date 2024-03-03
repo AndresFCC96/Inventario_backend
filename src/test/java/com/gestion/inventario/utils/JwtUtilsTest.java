@@ -10,8 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.crypto.SecretKey;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class JwtUtilsTest {
 
     private SecretKey Key;

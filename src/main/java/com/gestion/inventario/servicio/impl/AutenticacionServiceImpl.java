@@ -1,7 +1,6 @@
 package com.gestion.inventario.servicio.impl;
 
 import com.gestion.inventario.dominio.Rol;
-import com.gestion.inventario.utils.Roles;
 import com.gestion.inventario.dominio.Usuario;
 import com.gestion.inventario.dto.respuesta.SolicitudRespuesta;
 import com.gestion.inventario.dto.solicitud.SolicitudInicio;
@@ -9,6 +8,7 @@ import com.gestion.inventario.dto.solicitud.SolicitudRegistro;
 import com.gestion.inventario.repositorio.UsuarioRepository;
 import com.gestion.inventario.servicio.AutenticacionService;
 import com.gestion.inventario.utils.JwtUtils;
+import com.gestion.inventario.utils.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
