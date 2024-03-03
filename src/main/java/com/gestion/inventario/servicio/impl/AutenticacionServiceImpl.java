@@ -1,6 +1,7 @@
 package com.gestion.inventario.servicio.impl;
 
 import com.gestion.inventario.dominio.Rol;
+import com.gestion.inventario.utils.Roles;
 import com.gestion.inventario.dominio.Usuario;
 import com.gestion.inventario.dto.respuesta.SolicitudRespuesta;
 import com.gestion.inventario.dto.solicitud.SolicitudInicio;
@@ -38,7 +39,7 @@ public class AutenticacionServiceImpl implements AutenticacionService {
                 .telefono(solicitudRegistro.getTelefono())
                 .usuario(solicitudRegistro.getUsuario())
                 .password(passwordEncoder.encode(solicitudRegistro.getPassword()))
-                .rol(Rol.USUARIO)
+                .rol(Rol.builder().nombre(Roles.USUARIO).build())
                 .build();
         usuarioRepository.save(usuario);
         var jwt = jwtUtils.generateToken(usuario);

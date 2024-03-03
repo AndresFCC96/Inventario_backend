@@ -1,5 +1,6 @@
 package com.gestion.inventario.dominio;
 
+import com.gestion.inventario.utils.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user", schema = "public")
+@Table(name = "usuarios", schema = "public")
 public class Usuario implements UserDetails {
 
     @Id
@@ -49,13 +50,20 @@ public class Usuario implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "rol")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_rol", referencedColumnName = "id")
     private Rol rol;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_area", referencedColumnName = "id")
+    private Area area;
+
+    @OneToOne(mappedBy = "usuario")
+    private Dispositivo dispositivo;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(rol.name()));
+        return List.of(new SimpleGrantedAuthority(rol.toString()));
     }
 
     @Override

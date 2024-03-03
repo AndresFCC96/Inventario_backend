@@ -1,6 +1,6 @@
 package com.gestion.inventario.testdatabuilder;
 
-import com.gestion.inventario.dominio.Rol;
+import com.gestion.inventario.utils.Roles;
 import com.gestion.inventario.dominio.Usuario;
 
 public class UsuarioTestDataBuilder {
@@ -14,7 +14,7 @@ public class UsuarioTestDataBuilder {
     private String telefono;
     private String usuario;
     private String password;
-    private Rol rol;
+    private Roles rol;
 
     public UsuarioTestDataBuilder(){
         primerNombre = "Pablo";
@@ -25,7 +25,7 @@ public class UsuarioTestDataBuilder {
         telefono = "3169446263";
         usuario = "paanteme";
         password = "Prius_1212345";
-        rol = Rol.ADMINISTRADOR;
+        rol = Roles.ADMINISTRADOR;
     }
 
     public UsuarioTestDataBuilder usuarioConId(Long id){
@@ -73,7 +73,7 @@ public class UsuarioTestDataBuilder {
         return this;
     }
 
-    public UsuarioTestDataBuilder usuarioConRol(Rol rol){
+    public UsuarioTestDataBuilder usuarioConRol(Roles rol){
         this.rol = rol;
         return this;
     }

@@ -1,6 +1,5 @@
 package com.gestion.inventario.dominio;
 
-import com.gestion.inventario.utils.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,15 +13,20 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "roles", schema = "public")
-public class Rol implements Serializable {
+@Table(name = "areas", schema = "public")
+public class Area implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "nombre")
-    private Roles nombre;
+    private String nombre;
+
+    @OneToOne(mappedBy = "area")
+    private Usuario usuario;
+
+    @OneToOne(mappedBy = "area")
+    private Dispositivo dispositivo;
 }

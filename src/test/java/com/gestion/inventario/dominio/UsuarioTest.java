@@ -1,6 +1,7 @@
 package com.gestion.inventario.dominio;
 
 import com.gestion.inventario.testdatabuilder.UsuarioTestDataBuilder;
+import com.gestion.inventario.utils.Roles;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +22,7 @@ public class UsuarioTest {
         String telefono = "3169446263";
         String usuario = "paanteme";
         String password = "Prius_1212345";
-        Rol rol = Rol.ADMINISTRADOR;
+        Roles rol = Roles.ADMINISTRADOR;
         //Act
         Usuario usuarioTest = new UsuarioTestDataBuilder()
                 .usuarioConId(1L)
