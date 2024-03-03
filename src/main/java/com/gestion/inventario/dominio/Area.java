@@ -1,5 +1,6 @@
 package com.gestion.inventario.dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,9 +25,11 @@ public class Area implements Serializable {
     @Column(name = "nombre")
     private String nombre;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "area")
     private Usuario usuario;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "area")
     private Dispositivo dispositivo;
 }

@@ -75,6 +75,7 @@ public class AreaServiceImpl implements AreaService {
         validarNombreArea(areaDto.getNombre());
         Area areaAEncontrar = encontrarAreaPorId(areaDto.getId());
         Area area = AreaMapper.convertirAreaDtoAArea(areaDto);
+        System.out.println(area);
         areaRepository.delete(area);
         return Utils.respuestaExitosa(area.getId().toString(), " area", " eliminada");
     }
