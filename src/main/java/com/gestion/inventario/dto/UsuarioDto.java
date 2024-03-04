@@ -1,9 +1,7 @@
 package com.gestion.inventario.dto;
 
 import com.gestion.inventario.dominio.Rol;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.gestion.inventario.utils.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

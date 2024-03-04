@@ -8,6 +8,7 @@ import com.gestion.inventario.dto.solicitud.SolicitudRegistro;
 import com.gestion.inventario.repositorio.UsuarioRepository;
 import com.gestion.inventario.servicio.AutenticacionService;
 import com.gestion.inventario.utils.JwtUtils;
+import com.gestion.inventario.utils.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,7 +39,7 @@ public class AutenticacionServiceImpl implements AutenticacionService {
                 .telefono(solicitudRegistro.getTelefono())
                 .usuario(solicitudRegistro.getUsuario())
                 .password(passwordEncoder.encode(solicitudRegistro.getPassword()))
-                .rol(Rol.USUARIO)
+                .rol(Rol.builder().nombre(Roles.USUARIO).build())
                 .build();
         usuarioRepository.save(usuario);
         var jwt = jwtUtils.generateToken(usuario);
