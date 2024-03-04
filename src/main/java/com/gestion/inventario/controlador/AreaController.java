@@ -16,31 +16,31 @@ public class AreaController {
 
     @GetMapping("/areas")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> listAllProjects() throws Exception {
+    public ResponseEntity<?> listAllAreas() throws Exception {
         return ResponseEntity.ok().body(areaService.listarTodasLasAreas());
     }
 
     @GetMapping("/findareabyname")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> findProjectByName(@RequestParam("name") String name) throws Exception {
+    public ResponseEntity<?> findAreaByName(@RequestParam("name") String name) throws Exception {
         return ResponseEntity.ok().body(areaService.encontrarAreaPorNombre(name));
     }
 
     @PostMapping("/createarea")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> createNewProject(@RequestBody AreaDto areaDto) throws Exception {
+    public ResponseEntity<?> createNewArea(@RequestBody AreaDto areaDto) throws Exception {
         return ResponseEntity.ok().body(areaService.guardarArea(areaDto));
     }
 
     @PutMapping("/modifyarea")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> modifyAProject(@RequestBody AreaDto areaDto) throws Exception {
+    public ResponseEntity<?> modifyAArea(@RequestBody AreaDto areaDto) throws Exception {
         return ResponseEntity.ok().body(areaService.modificarArea(areaDto));
     }
 
     @DeleteMapping("/deletearea")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> deleteproject(@RequestBody AreaDto areaDto){
+    public ResponseEntity<?> deleteArea(@RequestBody AreaDto areaDto){
             return ResponseEntity.ok().body(areaService.eliminarArea(areaDto));
     }
 }

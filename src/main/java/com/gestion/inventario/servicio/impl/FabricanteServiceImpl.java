@@ -7,6 +7,7 @@ import com.gestion.inventario.mapper.FabricanteMapper;
 import com.gestion.inventario.repositorio.FabricanteRepository;
 import com.gestion.inventario.servicio.FabricanteService;
 import com.gestion.inventario.utils.Utils;
+import jdk.jshell.execution.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,9 +36,9 @@ public class FabricanteServiceImpl implements FabricanteService {
         validarNombreFabricante(fabricante);
         Optional<Fabricante> fabricanteABuscar = fabricanteRepository.findByNombre(fabricante);
         if(fabricanteABuscar.isEmpty()){
-            return Utils.respuestaEror(fabricante, " fabricante"," no existen fabricantes con ese nombre");
+            return Utils.respuestaEror(fabricante, " no existen fabricantes con ese nombre");
         }else{
-            return Utils.respuestaExitosa(fabricante, " fabricante", " encontrada");
+            return Utils.respuestaExitosa(fabricante, Utils.ENCONTRADO);
         }
     }
 
@@ -54,7 +55,7 @@ public class FabricanteServiceImpl implements FabricanteService {
         validarNombreFabricante(fabricanteDto.getNombre());
         Fabricante fabricante = FabricanteMapper.convertirFabricanteDtoAFabricante(fabricanteDto);
         fabricanteRepository.save(fabricante);
-        return Utils.respuestaExitosa(fabricante.getId().toString(), " fabricante", " creada");
+        return Utils.respuestaExitosa(fabricante.getId().toString(), Utils.CREACION_EXITOSA);
     }
 
     @Override
@@ -65,7 +66,7 @@ public class FabricanteServiceImpl implements FabricanteService {
         Fabricante fabricanteAEncontrar = encontrarFabricantePorId(fabricanteDto.getId());
         Fabricante fabricante = FabricanteMapper.convertirFabricanteDtoAFabricante(fabricanteDto);
         fabricanteRepository.save(fabricante);
-        return Utils.respuestaExitosa(fabricante.getId().toString(), " fabricante", " modicada");
+        return Utils.respuestaExitosa(fabricante.getId().toString(), Utils.MODIFICACION_EXITOSA);
     }
 
     @Override
@@ -74,15 +75,14 @@ public class FabricanteServiceImpl implements FabricanteService {
         validarIdFabricante(fabricanteDto.getId());
         validarNombreFabricante(fabricanteDto.getNombre());
         Fabricante fabricanteAEncontrar = encontrarFabricantePorId(fabricanteDto.getId());
-        Fabricante fabricante = FabricanteMapper.convertirFabricanteDtoAFabricante(fabricanteDto);
-        fabricanteRepository.delete(fabricante);
-        return Utils.respuestaExitosa(fabricante.getId().toString(), " fabricante", " eliminada");
+        fabricanteRepository.delete(fabricanteAEncontrar);
+        return Utils.respuestaExitosa(fabricanteAEncontrar.getId().toString(),  Utils.ELIMNACION_EXITOSA);
     }
 
     @Override
     public Respuesta validarFabricanteDto(FabricanteDto fabricanteDto) {
         if (!Utils.esUnObjeto(fabricanteDto)){
-            return  Utils.respuestaEror("fabricante", fabricanteDto.getId().toString(), " el fabricante no puede estar vacia");
+            return  Utils.respuestaEror(fabricanteDto.getId().toString(), " el fabricante no puede estar vacia");
         }
         return null;
     }
@@ -90,7 +90,7 @@ public class FabricanteServiceImpl implements FabricanteService {
     @Override
     public Respuesta validarIdFabricante(Long id) {
         if(!Utils.esNumerico(id.toString())){
-            return Utils.respuestaEror(id.toString(), " fabricante"," no existen fabricantes con ese id");
+            return Utils.respuestaEror(id.toString(), " no existen fabricantes con ese id");
         }
         return null;
     }
@@ -98,7 +98,7 @@ public class FabricanteServiceImpl implements FabricanteService {
     @Override
     public Respuesta validarNombreFabricante(String nombre) {
         if (!Utils.esUnaCadenaDeTexto(nombre)){
-            return Utils.respuestaEror(nombre, " fabricante"," no existen fabricantes con ese nombre");
+            return Utils.respuestaEror(nombre, " no existen fabricantes con ese nombre");
         }
         return null;
     }

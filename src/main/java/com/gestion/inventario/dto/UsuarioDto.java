@@ -1,5 +1,6 @@
 package com.gestion.inventario.dto;
 
+import com.gestion.inventario.dominio.Rol;
 import com.gestion.inventario.utils.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,5 +21,5 @@ public class UsuarioDto {
     private String telefono;
     private String usuario;
     private String password;
-    private Roles rol;
+    private Rol rol;
 }

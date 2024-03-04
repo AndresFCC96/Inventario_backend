@@ -24,4 +24,6 @@ public interface AreaService  {
 
     Respuesta validarIdArea(Long id);
     Respuesta validarNombreArea(String nombre);
+
+
 }

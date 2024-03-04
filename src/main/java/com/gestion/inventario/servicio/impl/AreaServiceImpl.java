@@ -35,9 +35,9 @@ public class AreaServiceImpl implements AreaService {
         validarNombreArea(area);
         Optional<Area> areaABuscar = areaRepository.findByNombre(area);
         if(areaABuscar.isEmpty()){
-            return Utils.respuestaEror(area, " area"," no existen areas con ese nombre");
+            return Utils.respuestaEror(area, " no existen areas con ese nombre");
         }else{
-            return Utils.respuestaExitosa(area, " area", " encontrada");
+            return Utils.respuestaExitosa(areaABuscar.get().toString(), Utils.ENCONTRADO);
         }
     }
 
@@ -54,7 +54,7 @@ public class AreaServiceImpl implements AreaService {
         validarNombreArea(areaDto.getNombre());
         Area area = AreaMapper.convertirAreaDtoAArea(areaDto);
         areaRepository.save(area);
-        return Utils.respuestaExitosa(area.getId().toString(), " area", " creada");
+        return Utils.respuestaExitosa(area.getId().toString(),  Utils.CREACION_EXITOSA);
     }
 
     @Override
@@ -64,8 +64,9 @@ public class AreaServiceImpl implements AreaService {
         validarNombreArea(areaDto.getNombre());
         Area areaAEncontrar = encontrarAreaPorId(areaDto.getId());
         Area area = AreaMapper.convertirAreaDtoAArea(areaDto);
+        area.setId(areaDto.getId());
         areaRepository.save(area);
-        return Utils.respuestaExitosa(area.getId().toString(), " area", " modicada");
+        return Utils.respuestaExitosa(area.getId().toString(),  Utils.MODIFICACION_EXITOSA);
     }
 
     @Override
@@ -74,16 +75,14 @@ public class AreaServiceImpl implements AreaService {
         validarIdArea(areaDto.getId());
         validarNombreArea(areaDto.getNombre());
         Area areaAEncontrar = encontrarAreaPorId(areaDto.getId());
-        Area area = AreaMapper.convertirAreaDtoAArea(areaDto);
-        System.out.println(area);
-        areaRepository.delete(area);
-        return Utils.respuestaExitosa(area.getId().toString(), " area", " eliminada");
+        areaRepository.delete(areaAEncontrar);
+        return Utils.respuestaExitosa(areaAEncontrar.getId().toString(),  Utils.ELIMNACION_EXITOSA);
     }
 
     @Override
     public Respuesta validarAreaDto(AreaDto areaDto) {
         if (!Utils.esUnObjeto(areaDto)){
-            return  Utils.respuestaEror("area", areaDto.getId().toString(), " el area no puede estar vacia");
+            return  Utils.respuestaEror(areaDto.getId().toString(), " el area no puede estar vacia");
         }
         return null;
     }
@@ -91,7 +90,7 @@ public class AreaServiceImpl implements AreaService {
     @Override
     public Respuesta validarIdArea(Long id) {
         if(!Utils.esNumerico(id.toString())){
-            return Utils.respuestaEror(id.toString(), " area"," no existen areas con ese id");
+            return Utils.respuestaEror(id.toString(), " no existen areas con ese id");
         }
         return null;
     }
@@ -99,7 +98,7 @@ public class AreaServiceImpl implements AreaService {
     @Override
     public Respuesta validarNombreArea(String nombre) {
         if (!Utils.esUnaCadenaDeTexto(nombre)){
-            return Utils.respuestaEror(nombre, " area"," no existen areas con ese nombre");
+            return Utils.respuestaEror(nombre, " no existen areas con ese nombre");
         }
         return null;
     }

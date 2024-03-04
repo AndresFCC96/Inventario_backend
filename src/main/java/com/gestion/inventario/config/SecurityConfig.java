@@ -4,6 +4,7 @@ import com.gestion.inventario.servicio.DetalleUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -31,10 +32,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/v1/auth/**", "/api/v1/public/**").permitAll()
-                        .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ADMIN")
-                        .requestMatchers("/api/v1/user/**").hasAnyAuthority("USUARIO")
-                        .requestMatchers("/api/v1/all/**").hasAnyAuthority("USUARIO", "ADMIN")
+                .authorizeHttpRequests(request -> request.requestMatchers("**").permitAll()
+                        .requestMatchers(HttpMethod.GET).hasAnyAuthority("USUARIO", "ADMINISTRADOR")
+                        .requestMatchers(HttpMethod.POST).hasAnyAuthority("ADMINISTRADOR")
+                        .requestMatchers(HttpMethod.PUT).hasAnyAuthority("ADMINISTRADOR")
+                        .requestMatchers(HttpMethod.DELETE).hasAnyAuthority("ADMINISTRADOR")
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(

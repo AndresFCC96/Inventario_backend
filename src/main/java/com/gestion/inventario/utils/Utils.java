@@ -17,6 +17,8 @@ public class Utils {
 
     public static String MENSAJE_DE_ERROR = "Ha ocurrido un error ";
 
+    public static String ENCONTRADO = "Objeto encontrado";
+
     public static String LISTA_VACIA = "La lista esta vacia";
 
     public static String LISTA = "Se encontraron varias objetos en esta lista";
@@ -67,7 +69,7 @@ public class Utils {
         return m.matches();
     }
 
-    public static Respuesta respuestaExitosa(String id, String objeto, String metodo){
+    public static Respuesta respuestaExitosa(String objeto, String metodo){
         return Respuesta.builder()
                 .identificator(objeto)
                 .codError("1: Éxito")
@@ -84,7 +86,7 @@ public class Utils {
                 .build();
     }
 
-    public static Respuesta respuestaEror(String id, String objeto, String mensajeError){
+    public static Respuesta respuestaEror(String objeto, String mensajeError){
         return Respuesta.builder()
                 .identificator(objeto)
                 .codError("0: Error")

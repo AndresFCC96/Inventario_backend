@@ -16,31 +16,31 @@ public class FabricanteController {
 
     @GetMapping("/manufacturers")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> listAllProjects() throws Exception {
+    public ResponseEntity<?> listAllManufacturers() throws Exception {
         return ResponseEntity.ok().body(fabricanteService.listarTodosLosFabricantes());
     }
 
-    @GetMapping("/findfabricantebyname")
+    @GetMapping("/findmanufacturerbyname")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> findProjectByName(@RequestParam("name") String name) throws Exception {
+    public ResponseEntity<?> findManufacturerByName(@RequestParam("name") String name) throws Exception {
         return ResponseEntity.ok().body(fabricanteService.encontrarFabricantePorNombre(name));
     }
 
-    @PostMapping("/createfabricante")
+    @PostMapping("/createmanufacturer")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> createNewProject(@RequestBody FabricanteDto fabricanteDto) throws Exception {
+    public ResponseEntity<?> createNewManufacturer(@RequestBody FabricanteDto fabricanteDto) throws Exception {
         return ResponseEntity.ok().body(fabricanteService.guardarFabricante(fabricanteDto));
     }
 
-    @PutMapping("/modifyfabricante")
+    @PutMapping("/modifymanufacturer")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> modifyAProject(@RequestBody FabricanteDto fabricanteDto) throws Exception {
+    public ResponseEntity<?> modifyAManufacturer(@RequestBody FabricanteDto fabricanteDto) throws Exception {
         return ResponseEntity.ok().body(fabricanteService.modificarFabricante(fabricanteDto));
     }
 
-    @DeleteMapping("/deletefabricante")
+    @DeleteMapping("/deletemanufacturer")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> deleteproject(@RequestBody FabricanteDto fabricanteDto){
+    public ResponseEntity<?> deleteManufacturer(@RequestBody FabricanteDto fabricanteDto){
         return ResponseEntity.ok().body(fabricanteService.eliminarFabricante(fabricanteDto));
     }
 }
