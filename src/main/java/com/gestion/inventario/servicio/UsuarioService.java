@@ -1,11 +1,8 @@
 package com.gestion.inventario.servicio;
 
 import com.gestion.inventario.dominio.Respuesta;
-import com.gestion.inventario.dominio.Usuario;
 import com.gestion.inventario.dto.UsuarioDto;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public interface UsuarioService {

@@ -2,8 +2,6 @@ package com.gestion.inventario.servicio.impl;
 
 import com.gestion.inventario.dominio.TipoDispositivo;
 import com.gestion.inventario.dominio.Respuesta;
-import com.gestion.inventario.dominio.TipoDispositivo;
-import com.gestion.inventario.dto.TipoDispositivoDto;
 import com.gestion.inventario.dto.TipoDispositivoDto;
 import com.gestion.inventario.mapper.TipoDispositivoMapper;
 import com.gestion.inventario.repositorio.TipoDispositivoRepository;

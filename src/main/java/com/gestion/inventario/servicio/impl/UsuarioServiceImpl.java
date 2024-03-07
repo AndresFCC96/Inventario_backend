@@ -1,6 +1,5 @@
 package com.gestion.inventario.servicio.impl;
 
-import com.gestion.inventario.dominio.Fabricante;
 import com.gestion.inventario.dominio.Respuesta;
 import com.gestion.inventario.dominio.Usuario;
 import com.gestion.inventario.dto.UsuarioDto;

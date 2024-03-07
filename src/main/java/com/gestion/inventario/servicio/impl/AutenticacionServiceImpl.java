@@ -30,7 +30,7 @@ public class AutenticacionServiceImpl implements AutenticacionService {
 
     @Override
     public SolicitudRespuesta registro(SolicitudRegistro solicitudRegistro) {
-        Usuario usuario = com.gestion.inventario.dominio.Usuario.builder()
+        Usuario usuario = Usuario.builder()
                 .primerNombre(solicitudRegistro.getPrimerNombre())
                 .segundoNombre(solicitudRegistro.getSegundoNombre())
                 .primerApellido(solicitudRegistro.getPrimerApellido())
