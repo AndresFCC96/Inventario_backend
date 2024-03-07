@@ -1,6 +1,7 @@
 package com.gestion.inventario.dto;
 
 import com.gestion.inventario.dominio.*;
+import com.gestion.inventario.dto.respuesta.Respuesta;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
